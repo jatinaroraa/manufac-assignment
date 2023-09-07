@@ -1,31 +1,25 @@
 import React from "react";
 import "./Tablecard.css";
 export default function TableCard({ classList, data }) {
-  console.log(classList?.length, "classList");
+  console.log(classList, "classList");
   return (
     <div>
       <table>
         <thead>
           <tr>
             <th>Measure</th>
-            {classList?.map((x, i) => {
-              return <th>{x}</th>;
+            {Object.entries(classList)?.map((x, i) => {
+              return <th>Alcohol {x[0]}</th>;
             })}
-            {/* <th>Widget</th>
-            <th>Wingding</th>
-            <th>Whatsit</th>
-            <th>Whirlygig</th> */}
           </tr>
         </thead>
         <tbody>
           {data?.map((item) => {
             return (
               <tr>
-                <td>
-                  {item.title} {item[item.key]}
-                </td>
-                {classList?.map((x) => {
-                  return <td> </td>;
+                <td>{item.title}</td>
+                {item[item.key]?.map((x) => {
+                  return <td> {x[item.key]}</td>;
                 })}
               </tr>
             );
