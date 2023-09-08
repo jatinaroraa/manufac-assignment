@@ -22,7 +22,8 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 ### `yarn build`
 
 ## project screenshort
-<img width="1440" alt="Screenshot 2023-09-07 at 7 11 33 PM" src="https://github.com/jatinaroraa/manufac-assignment/assets/81878338/a09c6a7a-7ee3-4230-9379-8ef4ce5624e6">
+<img width="1440" alt="Screenshot 2023-09-08 at 7 33 54 PM" src="https://github.com/jatinaroraa/manufac-assignment/assets/81878338/b0f7547c-7a1a-41df-9b7f-37991cdbe878">
+
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
