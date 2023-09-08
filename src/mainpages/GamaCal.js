@@ -38,16 +38,23 @@ export default function GamaCal() {
     let meanOfFlavanoids = Object.entries(countsOfAlcohol).map(
       (alcoholCount) => {
         let gamma = 0;
+        let sumOfxifi = 0;
+        let sumOffi = 0;
+
         //initialize in case if "ash and all" is missing in some class to calculate exact length otherwise we can use .length method
         let length = 0;
         classData.forEach((classItem) => {
           if (classItem.Alcohol === parseInt(alcoholCount[0])) {
-            gamma = +(classItem.Ash * classItem.Hue) / classItem.Magnesium;
-            length++;
+            // gamma = +(classItem.Ash * classItem.Hue) / classItem.Magnesium;
+            sumOfxifi =
+              +((classItem.Ash * classItem.Hue) / classItem.Magnesium) *
+              classItem.Alcohol;
+            sumOffi = +classItem.Flavanoids;
+            // length++;
           }
         });
 
-        let meanOfFlav = gamma / length;
+        let meanOfFlav = sumOfxifi / sumOffi;
 
         return {
           class: "Alcohol " + alcoholCount[0],
@@ -77,8 +84,9 @@ export default function GamaCal() {
           //for even case
           let midVal = dataByClass.length;
           let gamma1 =
-            (dataByClass[midVal / 2].Ash * dataByClass[midVal / 2].Hue) /
-            dataByClass[midVal / 2].Magnesium;
+            (dataByClass[midVal / 2 - 2].Ash *
+              dataByClass[midVal / 2 - 2].Hue) /
+            dataByClass[midVal / 2 - 2].Magnesium;
           let gamma2 =
             (dataByClass[midVal / 2 - 1].Ash *
               dataByClass[midVal / 2 - 1].Hue) /

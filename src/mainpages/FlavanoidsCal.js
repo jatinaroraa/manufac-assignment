@@ -44,16 +44,23 @@ export default function FlavanoidsCal() {
     let meanOfFlavanoids = Object.entries(countsOfAlcohol).map(
       (alcoholCount) => {
         let sumOfFlavanoids = 0;
+        let sumOfxifi = 0;
+
         //initialize in case if "Flavanoids" is missing in some class to calculate exact length otherwise we can use .length method
         let length = 0;
+        let sumOffi = 0;
+
         classData.forEach((classItem) => {
           if (classItem.Alcohol === parseInt(alcoholCount[0])) {
-            sumOfFlavanoids = +classItem.Flavanoids;
-            length++;
+            sumOfxifi = +classItem.Alcohol * classItem.Flavanoids;
+            // sumOfFlavanoids = +classItem.Flavanoids;
+            // length++;
+            sumOffi = +classItem.Flavanoids;
           }
         });
 
-        meanOfFlav = sumOfFlavanoids / length;
+        // meanOfFlav = sumOfFlavanoids / length;
+        meanOfFlav = sumOfxifi / sumOffi;
 
         return {
           class: "Alcohol" + alcoholCount[0],
@@ -83,8 +90,8 @@ export default function FlavanoidsCal() {
           let midVal = dataByClass.length;
 
           median =
-            (dataByClass[midVal / 2].Flavanoids +
-              dataByClass[midVal / 2 - 1].Flavanoids) /
+            (dataByClass[midVal / 2 - 1].Flavanoids +
+              dataByClass[midVal / 2 - 2].Flavanoids) /
             2;
         } else {
           let midVal = dataByClass.length - 1;
