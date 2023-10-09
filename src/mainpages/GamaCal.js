@@ -68,6 +68,28 @@ export default function GamaCal() {
       mean: meanOfFlavanoids,
     };
   };
+  const sortTheArray = (array) => {
+    //convert in to assending order
+    let max = 0;
+    let convertArr = [];
+    let arr = array.map((x) => {
+      let f = ((x.Ash * x.Hue) / x.Magnesium).toFixed(3);
+      return Math.round(f * 1e3) / 1e3;
+      // return f.toFixed(3);
+    });
+
+    for (var i = 0; i < arr.length; i++) {
+      for (var j = 0; j < arr.length - i - 1; j++) {
+        if (arr[j] > arr[j + 1]) {
+          var tempValue = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = tempValue;
+        }
+      }
+    }
+
+    return arr;
+  };
   const calculateMedian = () => {
     let countsOfAlcohol = getClassData(classData);
     let medianOfFlavanoids = Object.entries(countsOfAlcohol).map(
@@ -78,25 +100,24 @@ export default function GamaCal() {
         let median = 0;
 
         let length = dataByClass.length % 2;
-
+        let dataThe = sortTheArray(dataByClass);
         // return;
         if (length === 0) {
           //for even case
-          let midVal = dataByClass.length;
-          let gamma1 =
-            (dataByClass[midVal / 2 - 2].Ash *
-              dataByClass[midVal / 2 - 2].Hue) /
-            dataByClass[midVal / 2 - 2].Magnesium;
-          let gamma2 =
-            (dataByClass[midVal / 2 - 1].Ash *
-              dataByClass[midVal / 2 - 1].Hue) /
-            dataByClass[midVal / 2 - 1].Magnesium;
-          median = (gamma1 + gamma2) / 2;
+          let midVal = dataThe.length;
+          // let gamma1 =
+          //   (dataThe[midVal / 2 - 2].Ash * dataThe[midVal / 2 - 2].Hue) /
+          //   dataThe[midVal / 2 - 2].Magnesium;
+          // let gamma2 =
+          //   (dataThe[midVal / 2 - 1].Ash * dataThe[midVal / 2 - 1].Hue) /
+          //   dataThe[midVal / 2 - 1].Magnesium;
+          median = (dataThe[midVal / 2 - 2] + dataThe[midVal / 2 - 1]) / 2;
         } else {
-          let midVal = dataByClass.length - 1;
-          median =
-            (dataByClass[midVal].Ash * dataByClass[midVal].Hue) /
-            dataByClass[midVal].Magnesium;
+          let midVal = dataThe.length - 1;
+          // median =
+          //   (dataThe[midVal].Ash * dataThe[midVal].Hue) /
+          //   dataThe[midVal].Magnesium;
+          median = dataThe[midVal];
         }
         return {
           class: "Alcohol " + alcoholCount[0],

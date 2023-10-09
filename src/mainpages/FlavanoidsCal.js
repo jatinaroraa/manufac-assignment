@@ -52,15 +52,15 @@ export default function FlavanoidsCal() {
 
         classData.forEach((classItem) => {
           if (classItem.Alcohol === parseInt(alcoholCount[0])) {
-            sumOfxifi = +classItem.Alcohol * classItem.Flavanoids;
-            // sumOfFlavanoids = +classItem.Flavanoids;
-            // length++;
-            sumOffi = +classItem.Flavanoids;
+            // sumOfxifi = +classItem.Alcohol * classItem.Flavanoids;
+            sumOfFlavanoids = +classItem.Flavanoids;
+            length++;
+            // sumOffi = +classItem.Flavanoids;
           }
         });
-
-        // meanOfFlav = sumOfFlavanoids / length;
-        meanOfFlav = sumOfxifi / sumOffi;
+        console.log(sumOfFlavanoids, parseInt(alcoholCount[0]), "alcohol");
+        meanOfFlav = sumOfFlavanoids / length;
+        // meanOfFlav = sumOfxifi / sumOffi;
 
         return {
           class: "Alcohol" + alcoholCount[0],
@@ -71,7 +71,23 @@ export default function FlavanoidsCal() {
 
     return { mean: meanOfFlavanoids, title: "Flavanoids mean", key: "mean" };
   };
+  const sortTheArray = (arr) => {
+    //convert in to assending order
+    let max = 0;
+    let convertArr = [];
 
+    for (var i = 0; i < arr.length; i++) {
+      for (var j = 0; j < arr.length - i - 1; j++) {
+        if (arr[j] > arr[j + 1]) {
+          var tempValue = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = tempValue;
+        }
+      }
+    }
+
+    return arr;
+  };
   const calculateMedian = () => {
     let countsOfAlcohol = getClassData(classData);
     let medianOfFlavanoids = Object.entries(countsOfAlcohol).map(
@@ -83,19 +99,20 @@ export default function FlavanoidsCal() {
         let median = 0;
 
         let length = dataByClass.length % 2;
-
+        let dataarr = dataByClass.map((x) => {
+          return x.Flavanoids;
+        });
+        dataByClass = sortTheArray(dataarr);
         // return;
         if (length === 0) {
           //for even case
           let midVal = dataByClass.length;
 
           median =
-            (dataByClass[midVal / 2 - 1].Flavanoids +
-              dataByClass[midVal / 2 - 2].Flavanoids) /
-            2;
+            (dataByClass[midVal / 2 - 1] + dataByClass[midVal / 2 - 2]) / 2;
         } else {
           let midVal = dataByClass.length - 1;
-          median = dataByClass[midVal].Flavanoids;
+          median = dataByClass[midVal];
         }
 
         return {
