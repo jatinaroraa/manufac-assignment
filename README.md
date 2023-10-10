@@ -20,9 +20,11 @@ Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `yarn build`
+## project link
+https://jatinaroraa.github.io/manufac-assignment/
 
 ## project screenshort
-<img width="1440" alt="Screenshot 2023-09-08 at 7 33 54 PM" src="https://github.com/jatinaroraa/manufac-assignment/assets/81878338/b0f7547c-7a1a-41df-9b7f-37991cdbe878">
+<img width="1440" alt="Screenshot 2023-10-09 at 6 00 52 PM" src="https://github.com/jatinaroraa/manufac-assignment/assets/81878338/93f8c65b-6ec7-46d7-82f2-07f3bf6216db">
 
 
 Builds the app for production to the `build` folder.\
