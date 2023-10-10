@@ -140,12 +140,13 @@ export default function GamaCal() {
         //calculate total numbers for mode
         classData.forEach(function (e) {
           let gamma = (e.Ash * e.Hue) / e.Magnesium;
-          gamma = gamma.toFixed(3);
-          if (counts[gamma] === undefined) {
-            counts[gamma] = 0;
-          } else counts[gamma] += 1;
-        });
 
+          gamma = parseFloat(gamma).toFixed(3);
+          if (e.Alcohol === parseInt(alcoholCount[0]))
+            if (counts[gamma] === undefined) {
+              counts[gamma] = 0;
+            } else counts[gamma] += 1;
+        });
         let values = Object.entries(counts);
         let maxVal = -1;
         let max = {};
@@ -157,6 +158,8 @@ export default function GamaCal() {
             max = { [item[0]]: item[1] };
           }
         });
+        console.log(max, "counts of mode");
+
         return {
           class: "Alcohol " + alcoholCount[0],
           mode: Object.keys(max)[0],

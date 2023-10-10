@@ -54,11 +54,19 @@ export default function FlavanoidsCal() {
           if (classItem.Alcohol === parseInt(alcoholCount[0])) {
             // sumOfxifi = +classItem.Alcohol * classItem.Flavanoids;
             sumOfFlavanoids = +classItem.Flavanoids;
-            length++;
+            ++length;
             // sumOffi = +classItem.Flavanoids;
           }
         });
-        console.log(sumOfFlavanoids, parseInt(alcoholCount[0]), "alcohol");
+        // sumOfFlavanoids = Math.round(sumOfFlavanoids * 1e3) / 1e3;
+        console.log(
+          // sumOfFlavanoids.toFixed(3),
+          sumOfFlavanoids,
+          // Math.round(sumOfFlavanoids * 1e3) / 1e3,
+          parseInt(alcoholCount[0]),
+          length,
+          "alcohol"
+        );
         meanOfFlav = sumOfFlavanoids / length;
         // meanOfFlav = sumOfxifi / sumOffi;
 
@@ -114,7 +122,7 @@ export default function FlavanoidsCal() {
           let midVal = dataByClass.length - 1;
           median = dataByClass[midVal];
         }
-
+        console.log(median, "median ");
         return {
           class: "Alcohol " + alcoholCount[0],
           median: median.toFixed(3),
@@ -143,7 +151,7 @@ export default function FlavanoidsCal() {
               counts[e.Flavanoids] = 0;
             } else counts[e.Flavanoids] += 1;
         });
-
+        // console.log(counts, "counts", parseInt(alcoholCount[0]));
         let values = Object.entries(counts);
         let maxVal = -1;
         let max = {};
@@ -156,10 +164,10 @@ export default function FlavanoidsCal() {
           }
         });
         let val = Object.keys(max)[0];
-
+        // console.log(val, "max before to fixed", parseFloat(val).toFixed(3));
         return {
           class: "Alcohol " + alcoholCount[0],
-          mode: parseInt(val).toFixed(3),
+          mode: parseFloat(val).toFixed(3),
         };
       }
     );
