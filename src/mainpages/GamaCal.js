@@ -45,16 +45,16 @@ export default function GamaCal() {
         let length = 0;
         classData.forEach((classItem) => {
           if (classItem.Alcohol === parseInt(alcoholCount[0])) {
-            // gamma = +(classItem.Ash * classItem.Hue) / classItem.Magnesium;
-            sumOfxifi =
-              +((classItem.Ash * classItem.Hue) / classItem.Magnesium) *
-              classItem.Alcohol;
-            sumOffi = +classItem.Flavanoids;
-            // length++;
+            gamma = +(classItem.Ash * classItem.Hue) / classItem.Magnesium;
+            // sumOfxifi =
+            //   +((classItem.Ash * classItem.Hue) / classItem.Magnesium) *
+            //   classItem.Alcohol;
+            // sumOffi = +classItem.Flavanoids;
+            ++length;
           }
         });
 
-        let meanOfFlav = sumOfxifi / sumOffi;
+        let meanOfFlav = gamma / length;
 
         return {
           class: "Alcohol " + alcoholCount[0],
@@ -111,13 +111,13 @@ export default function GamaCal() {
           // let gamma2 =
           //   (dataThe[midVal / 2 - 1].Ash * dataThe[midVal / 2 - 1].Hue) /
           //   dataThe[midVal / 2 - 1].Magnesium;
-          median = (dataThe[midVal / 2 - 2] + dataThe[midVal / 2 - 1]) / 2;
+          median = (dataThe[midVal / 2 - 1] + dataThe[midVal / 2]) / 2;
         } else {
           let midVal = dataThe.length - 1;
           // median =
           //   (dataThe[midVal].Ash * dataThe[midVal].Hue) /
           //   dataThe[midVal].Magnesium;
-          median = dataThe[midVal];
+          median = dataThe[midVal / 2];
         }
         return {
           class: "Alcohol " + alcoholCount[0],

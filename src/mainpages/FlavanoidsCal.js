@@ -60,11 +60,12 @@ export default function FlavanoidsCal() {
         });
         // sumOfFlavanoids = Math.round(sumOfFlavanoids * 1e3) / 1e3;
         console.log(
-          // sumOfFlavanoids.toFixed(3),
           sumOfFlavanoids,
-          // Math.round(sumOfFlavanoids * 1e3) / 1e3,
+
           parseInt(alcoholCount[0]),
           length,
+          sumOfFlavanoids / length,
+          parseFloat(sumOfFlavanoids / length).toFixed(3),
           "alcohol"
         );
         meanOfFlav = sumOfFlavanoids / length;
@@ -115,14 +116,20 @@ export default function FlavanoidsCal() {
         if (length === 0) {
           //for even case
           let midVal = dataByClass.length;
-
-          median =
-            (dataByClass[midVal / 2 - 1] + dataByClass[midVal / 2 - 2]) / 2;
+          console.log(
+            midVal,
+            midVal / 2,
+            midVal / 2 - 1,
+            "mid value of median"
+          );
+          median = (dataByClass[midVal / 2 - 1] + dataByClass[midVal / 2]) / 2;
         } else {
           let midVal = dataByClass.length - 1;
-          median = dataByClass[midVal];
+          console.log(midVal / 2, "mid value of median odd");
+
+          median = dataByClass[midVal / 2];
         }
-        console.log(median, "median ");
+
         return {
           class: "Alcohol " + alcoholCount[0],
           median: median.toFixed(3),
