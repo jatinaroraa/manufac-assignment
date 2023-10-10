@@ -24,7 +24,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 https://jatinaroraa.github.io/manufac-assignment/
 
 ## project screenshort
-<img width="1440" alt="Screenshot 2023-10-09 at 6 00 52 PM" src="https://github.com/jatinaroraa/manufac-assignment/assets/81878338/93f8c65b-6ec7-46d7-82f2-07f3bf6216db">
+<img width="1440" alt="Screenshot 2023-10-10 at 2 42 52 PM" src="https://github.com/jatinaroraa/manufac-assignment/assets/81878338/b4147b15-d755-4bec-8ecd-93f177e5fa0d">
 
 
 Builds the app for production to the `build` folder.\
